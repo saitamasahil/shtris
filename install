@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Check for the Distro Type & Install necessary packages
+
+PACKAGE_MANAGERS=("pkg" "apt" "yum" "dnf" "pacman" "zypper")
+PACKAGES=("mplayer")
+
+for PM in "${PACKAGE_MANAGERS[@]}"; do
+  if command -v "$PM" >/dev/null; then
+    case "$PM" in
+    "pkg") pkg install "${PACKAGES[@]}" ;;
+    "apt") sudo apt-get install "${PACKAGES[@]}" ;;
+    "yum") sudo yum install "${PACKAGES[@]}" ;;
+    "dnf") sudo dnf install "${PACKAGES[@]}" ;;
+    "pacman") sudo pacman -S "${PACKAGES[@]}" ;;
+    "zypper") sudo zypper install "${PACKAGES[@]}" ;;
+    esac
+    break
+  fi
+done
+
+if [ -f /etc/fedora-release ]; then
+  sudo dnf install "${PACKAGES[@]}"
+fi

@@ -2,7 +2,7 @@
 
 The pure shell script (sh) that implements the Tetris game following the Tetris Guideline (2009).
 
-The aim is to understand more about shell script and Tetris algorithms.
+The aim is to understand more about shell script and Tetris algorithms. This repository is fork of [ContentsViewer/shtris](https://github.com/ContentsViewer/shtris). I just added background music for more Tetris feel. So, All credits to original developer for awesome work.
 
 [Tetris Guideline. Tetris Wiki. accessed at 2020-05-23](https://tetris.fandom.com/wiki/Tetris_Guideline).
 
@@ -25,12 +25,15 @@ I've implemented the following
 
 ## Usage
 
+#### Clone & Download required packages
 ```sh
-# Download (v3.0.0)
-wget https://raw.githubusercontent.com/ContentsViewer/shtris/v3.0.0/shtris
-chmod +x shtris
-
-./shtris
+git clone --depth=1 https://github.com/saitamasahil/shtris.git
+cd shtris
+bash install
+```
+#### Play game
+```sh
+bash shtris
 ```
 
 <details>

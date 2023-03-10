@@ -61,6 +61,22 @@
 #     `time sh -c 'i=0; while [ $i -lt 1000 ]; do i=$((i+1)); <TEST CODE>; done'`
 #
 
+# Function to stop music
+stop_music() {
+    # Find the process ID of the music player
+    pid=$(pgrep play)
+    # If the music player process is running, kill it
+    if [ -n "$pid" ]; then
+        kill "$pid"
+    fi
+}
+
+# Call the stop_music function when script exits
+trap stop_music EXIT
+
+# Loop music file in background
+mplayer tetris.m4a > /dev/null 2>&1 &
+
 set -u # non initialized variable is an error
 set -f # disable pathname expansion
 
